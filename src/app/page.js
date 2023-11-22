@@ -1,3 +1,4 @@
+import CardProduct from "@/components/CardProduct";
 import { default as Slider } from "@/components/Slider";
 import SliderHome from "@/components/SliderHome";
 
@@ -18,10 +19,18 @@ export default function Home() {
         <Slider type={"shopByRoom"} title={"Shop By Room"} />
       </div>
 
-      <div className=" w-full">
-        <h1 className="text-3xl font-semibold my-5 lg:text-4xl">
-          Recommended for you
-        </h1>
+      <div className=" w-full ">
+        <div className="my-5 ">
+          <h1 className="text-3xl  font-semibold lg:text-4xl">
+            Recommended for you
+          </h1>
+        </div>
+        <section className="grid gap-5 grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center">
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+          <CardProduct />
+        </section>
       </div>
     </main>
   );
