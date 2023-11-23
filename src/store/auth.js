@@ -3,12 +3,15 @@ import { create } from "zustand";
 
 const useStore = create((set) => ({
   isAuthenticated: false,
-  login: async ({ email, password }) => {
-    const res = await loginFetch(email, password);
+  messageError: "",
+  login: async ({ username, password }) => {
+    const res = await loginFetch({ username, password });
+
     if (res.token) {
       set({ isAuthenticated: true });
     } else {
       set({ isAuthenticated: false });
+      set({ messageError: res.message });
     }
   },
 
