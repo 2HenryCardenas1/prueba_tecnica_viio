@@ -1,4 +1,4 @@
-const { default: axios } = require("axios");
+import axios from "axios";
 
 const ERROR_PROBLEMA_SOLICITUD = "Error en la solicitud: Ocurrió un problema";
 
