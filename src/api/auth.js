@@ -1,20 +1,21 @@
 const { default: axios } = require("axios");
 
-const loginFetch = async (email, password) => {
+const ERROR_PROBLEMA_SOLICITUD = "Error en la solicitud: Ocurrió un problema";
+
+const loginFetch = async ({ username, password }) => {
   try {
     const response = await axios.post("https://dummyjson.com/auth/login", {
-      username: email,
+      username: username,
       password: password,
     });
 
     return response.data;
   } catch (error) {
     if (error.response && error.response.status === 400) {
-      throw new Error("Error en la solicitud: Credenciales incorrectas");
+      return error.response.data;
     } else {
-      throw new Error("Error en la solicitud: Ocurrió un problema");
+      throw new Error(ERROR_PROBLEMA_SOLICITUD);
     }
   }
 };
-
 export { loginFetch };
