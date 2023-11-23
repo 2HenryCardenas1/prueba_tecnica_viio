@@ -13,7 +13,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 export default function Navbar() {
   const pathname = usePathname();
-  const { isAuthenticated, logout } = useStore((state) => state);
+  const { isAuthenticated, logout, registered } = useStore((state) => state);
   const router = useRouter();
   const handleLogout = () => {
     logout();
