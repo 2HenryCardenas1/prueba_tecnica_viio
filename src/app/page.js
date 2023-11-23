@@ -1,7 +1,12 @@
 import CardProduct from "@/components/CardProduct";
 import { default as Slider } from "@/components/Slider";
 import SliderHome from "@/components/SliderHome";
-
+const product = {
+  id: 1,
+  title: "iPhone 9",
+  price: 1500,
+  thumbnail: "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
+};
 export default function Home() {
   return (
     <main
@@ -25,11 +30,11 @@ export default function Home() {
             Recommended for you
           </h1>
         </div>
-        <section className="grid gap-5 grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center">
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
-          <CardProduct />
+        <section className="grid gap-5 grid-cols-1  md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 ">
+          <CardProduct product={product} />
+          <CardProduct product={product} />
+          <CardProduct product={product} />
+          <CardProduct product={product} />
         </section>
       </div>
     </main>
