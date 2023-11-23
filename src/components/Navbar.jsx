@@ -56,11 +56,14 @@ export default function Navbar() {
       </div>
       <div className="flex justify-between gap-2 sm:gap-3 md:gap-5">
         <IconLink href="/" icon={<IconHome size={20} />} text="Home" />
-        <IconLink
-          href="/search"
-          icon={<IconSearch size={20} />}
-          text="Search"
-        />
+        {isAuthenticated && (
+          <IconLink
+            href="/search"
+            icon={<IconSearch size={20} />}
+            text="Search"
+          />
+        )}
+
         <IconLink
           href="/cart"
           icon={<IconShoppingCart size={20} />}
