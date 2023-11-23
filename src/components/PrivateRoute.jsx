@@ -8,6 +8,11 @@ const PrivateRoute = ({ children }) => {
   const { isAuthenticated } = useStore((state) => state);
 
   useEffect(() => {
+    useStore.persist.rehydrate();
+  });
+
+  useEffect(() => {
+    console.log("Entro seguyndo UseEffect");
     if (!isAuthenticated) {
       router.push("/auth/login");
     }
