@@ -1,8 +1,12 @@
-# API Documentation
+# API Documentation 📄
 
-```
- Se uso [https://dummyjson.com/docs/users](dummyjson.com) para generar los datos de prueba
-```
+Se uso [dummyjson.com](https://dummyjson.com/docs) para generar los datos de prueba
+
+# Wireframe - Diseño 🎨
+
+Se tuvo en cuenta el wireframe presentado por VIIO
+
+##
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
