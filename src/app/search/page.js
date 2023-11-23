@@ -1,3 +1,9 @@
+import PrivateRoute from "@/components/PrivateRoute";
+
 export default function SearchPage() {
-  return <div>SearchPage</div>;
+  return (
+    <PrivateRoute>
+      <div>SearchPage</div>;
+    </PrivateRoute>
+  );
 }
