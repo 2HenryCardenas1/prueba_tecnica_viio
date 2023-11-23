@@ -1,38 +1,64 @@
 import { loginFetch, registerFetch } from "@/api/auth";
 import { create } from "zustand";
+import { devtools, persist } from "zustand/middleware";
 
-const useStore = create((set) => ({
-  isAuthenticated: false,
-  registered: false,
-  messageError: "",
-  login: async ({ username, password }) => {
-    const res = await loginFetch({ username, password });
+const useStore = create(
+  persist(
+    devtools((set) => ({
+      isAuthenticated: false,
+      registered: false,
+      messageError: "",
+      login: async ({ username, password }) => {
+        try {
+          const res = await loginFetch({ username, password });
 
-    if (res.token) {
-      set({ isAuthenticated: true });
-    } else {
-      set({ isAuthenticated: false });
-      set({ messageError: res.message });
+          if (res.token) {
+            set({ isAuthenticated: true });
+            setToken(res.token);
+          } else {
+            set({ isAuthenticated: false, error: res.message });
+          }
+        } catch (error) {
+          set({ isAuthenticated: false, error: "Error during login" });
+        }
+      },
+
+      logout: () => {
+        set({ isAuthenticated: false });
+        clearToken();
+      },
+
+      register: async ({ firstName, lastName, username, password }) => {
+        try {
+          const res = await registerFetch({
+            firstName,
+            lastName,
+            username,
+            password,
+          });
+
+          if (res) {
+            set({ registered: true });
+          } else {
+            set({ registered: false, error: res.message });
+          }
+        } catch (error) {
+          set({ registered: false, error: "Error during registration" });
+        }
+      },
+    })),
+    {
+      name: "auth-storage",
     }
-  },
+  )
+);
 
-  logout: () => set({ isAuthenticated: false }),
+const setToken = (token) => {
+  localStorage.setItem("token", token);
+};
 
-  register: async ({ firstName, lastName, username, password }) => {
-    const res = await registerFetch({
-      firstName,
-      lastName,
-      username,
-      password,
-    });
-
-    if (res) {
-      set({ registered: true });
-    } else {
-      set({ registered: false });
-      set({ messageError: res.message });
-    }
-  },
-}));
+const clearToken = () => {
+  localStorage.removeItem("token");
+};
 
 export default useStore;
