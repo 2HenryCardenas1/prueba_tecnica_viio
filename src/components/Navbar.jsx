@@ -1,16 +1,24 @@
 "use client";
+import useStore from "@/store/auth";
 import {
   IconHeart,
   IconHome,
   IconLogin,
   IconSearch,
   IconShoppingCart,
+  IconUserPlus,
 } from "@tabler/icons-react";
 import clsx from "clsx";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 export default function Navbar() {
   const pathname = usePathname();
+  const { isAuthenticated, logout } = useStore((state) => state);
+  const router = useRouter();
+  const handleLogout = () => {
+    logout();
+    router.refresh();
+  };
 
   const IconLink = ({ href, icon, text }) => {
     return (
@@ -54,7 +62,32 @@ export default function Navbar() {
           icon={<IconHeart size={20} />}
           text="Favorites"
         />
-        <IconLink href="/login" icon={<IconLogin size={20} />} text="Login" />
+
+        {isAuthenticated ? (
+          <>
+            <button
+              onClick={handleLogout}
+              className="flex flex-row justify-center items-center"
+            >
+              <IconLogin size={20} />
+              <span className="hidden sm:block font-semibold">Logout</span>
+            </button>
+          </>
+        ) : (
+          <>
+            <IconLink
+              href="/auth/login"
+              icon={<IconLogin size={20} />}
+              text="Login"
+            />
+
+            <IconLink
+              href="/auth/register"
+              icon={<IconUserPlus size={20} />}
+              text="Register"
+            />
+          </>
+        )}
       </div>
     </div>
   );
