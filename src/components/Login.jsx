@@ -1,6 +1,7 @@
 "use client";
 
 import useStore from "@/store/auth";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -130,7 +131,10 @@ export default function Login() {
         </button>
 
         <p>
-          Don&apos;t have an account? <strong>Sign up</strong>
+          Don&apos;t have an account?{" "}
+          <Link href="/auth/register">
+            <strong>Sign up</strong>
+          </Link>
         </p>
       </div>
     </div>
