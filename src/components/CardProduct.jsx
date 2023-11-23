@@ -1,3 +1,15 @@
+/**
+ * Componente cardProduc.
+ *
+ * Este componente es una tarjeta que muestra un producto con su imagen, nombre y precio.
+ *
+ *
+ * @component
+ * @example
+ * return (
+ *  <CardProduct />
+ * )
+ */
 import { IconHeart } from "@tabler/icons-react";
 import Image from "next/image";
 

@@ -1,3 +1,15 @@
+/**
+ * Componente SliderHome.
+ *
+ * Este componente muestra un slider de imágenes con la funcionalidad de navegación y paginación.
+ * Utiliza la librería Swiper para implementar el slider.
+ *
+ * @component
+ * @example
+ * return (
+ *   <SliderHome />
+ * )
+ */
 "use client";
 import "swiper/css";
 import "swiper/css/navigation";

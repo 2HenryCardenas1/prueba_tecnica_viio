@@ -1,3 +1,12 @@
+/**
+ * Componente de la barra de navegación.
+ *
+ * @component
+ * @example
+ * return (
+ *   <Navbar />
+ * )
+ */
 "use client";
 import useStore from "@/store/auth";
 import {

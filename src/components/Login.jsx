@@ -1,3 +1,11 @@
+/**
+ * Componente de inicio de sesión.
+ *
+ * Este componente muestra un formulario de inicio de sesión con campos para el nombre de usuario y la contraseña.
+ * También incluye opciones para recordar la sesión, restablecer la contraseña y registrarse.
+ *
+ * @returns {JSX.Element} El elemento JSX del componente de inicio de sesión.
+ */
 "use client";
 
 import useStore from "@/store/auth";

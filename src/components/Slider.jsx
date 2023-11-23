@@ -1,3 +1,11 @@
+/**
+ * Componente Slider.
+ *
+ * @component
+ * @param {string} type - El tipo de slider ("roomIdeas" o "shopByRoom").
+ * @param {string} title - El título del slider.
+ * @returns {JSX.Element} El componente Slider.
+ */
 "use client";
 import Image from "next/image";
 import { Suspense } from "react";
