@@ -11,6 +11,8 @@
  * )
  */
 "use client";
+import useStore from "@/store/auth";
+import { useEffect } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -71,6 +73,11 @@ export default function SliderHome() {
     delay: 3500,
     disableOnInteraction: false,
   };
+
+  useEffect(() => {
+    useStore.persist.rehydrate();
+  }, []);
+
   return (
     <div className=" w-full ">
       <Swiper
