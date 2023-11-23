@@ -1,6 +1,6 @@
 /**
  * Componente de registro que permite a los usuarios crear una cuenta.
- *
+ *Hay que tener en cuenta que dado que se esta haciendo uso de una API externa, no se puede registrar un usuario, esto es solo para probar el funcionamiento de la aplicación y componente.
  * @returns {JSX.Element} El elemento JSX del componente de registro.
  */
 "use client";
