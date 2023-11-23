@@ -48,7 +48,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className=" flex justify-between p-5 bg-slate-800 items-center text-white px-20">
+    <div className=" flex justify-between p-5 bg-slate-800 items-center text-white md:px-20">
       <div>
         <Link href="/">
           <h1 className="text-2xl lg:text-3xl font-bold ">MAYNOOT</h1>
