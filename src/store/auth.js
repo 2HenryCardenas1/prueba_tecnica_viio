@@ -1,25 +1,24 @@
 import { loginFetch, registerFetch } from "@/api/auth";
 import { create } from "zustand";
-import { devtools, persist } from "zustand/middleware";
+import { persist } from "zustand/middleware";
 
 const useStore = create(
   persist(
-    devtools((set) => ({
-      isAuthenticated: false,
-      registered: false,
-      messageError: "",
+    (set, get) => ({
       login: async ({ username, password }) => {
-        try {
-          const res = await loginFetch({ username, password });
+        if (typeof window !== "undefined") {
+          try {
+            const res = await loginFetch({ username, password });
 
-          if (res.token) {
-            set({ isAuthenticated: true });
-            setToken(res.token);
-          } else {
-            set({ isAuthenticated: false, error: res.message });
+            if (res.token) {
+              set({ isAuthenticated: true });
+              setToken(res.token);
+            } else {
+              set({ isAuthenticated: false, error: res.message });
+            }
+          } catch (error) {
+            set({ isAuthenticated: false, error: "Error during login" });
           }
-        } catch (error) {
-          set({ isAuthenticated: false, error: "Error during login" });
         }
       },
 
@@ -46,9 +45,10 @@ const useStore = create(
           set({ registered: false, error: "Error during registration" });
         }
       },
-    })),
+    }),
     {
       name: "auth-storage",
+      skipHydration: true,
     }
   )
 );
