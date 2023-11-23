@@ -1,3 +1,8 @@
+/**
+ * Componente de registro que permite a los usuarios crear una cuenta.
+ *
+ * @returns {JSX.Element} El elemento JSX del componente de registro.
+ */
 "use client";
 
 import useStore from "@/store/auth";
